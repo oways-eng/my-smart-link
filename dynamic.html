@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart App Link</title>
+  <script>
+    // روابط التطبيقات
+    const androidLink = "https://play.google.com/store/apps/details?id=net.qout.app";
+    const iosLink = "https://apps.apple.com/jo/app/qout/id6651838518";
+
+    // التحقق من نوع الجهاز
+    window.onload = function () {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      if (/android/i.test(userAgent)) {
+        window.location.href = androidLink; // توجيه إلى Google Play
+      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        window.location.href = iosLink; // توجيه إلى App Store
+      } else {
+        document.getElementById("message").textContent = "جهازك غير مدعوم.";
+      }
+    };
+  </script>
+</head>
+<body>
+  <h1>جاري التوجيه إلى التطبيق...</h1>
+  <p id="message" style="color: red;"></p>
+</body>
+</html>
